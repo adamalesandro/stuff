@@ -4,5 +4,5 @@ var app = express();
 app.use(express.static('templates'));
 
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+    console.log('Running on http://localhost:3000');
 });
