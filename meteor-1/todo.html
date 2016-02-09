@@ -1,0 +1,18 @@
+<head>
+    <title>todo</title>
+    <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div class="container">
+    <h1>Welcome to Meteor!</h1>
+
+    {{> CounterTmpl}}
+</div>
+</body>
+
+<template name="CounterTmpl">
+    <input id="CounterIncrement" class="form-control" type="number" value="{{counterIncrement}}"/>
+    <button class="btn btn-default">Click Me</button>
+    <p>You've pressed the button {{counter}} times.</p>
+</template>
