@@ -1,0 +1,9 @@
+
+Here is how to generate a new key:
+
+pgp --gen-key "NAME_OF_KEY_HERE" --key-type rsa --encryption-bits 2048 --passphrase " "
+
+// The empty passphrase means that it will be generated without one.
+
+
+pgp --export "NAME_OF_KEY_HERE"
