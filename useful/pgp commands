@@ -1,0 +1,42 @@
+Useful commands:
+
+pgp --list-keys
+
+pgp --list-key-details 
+
+pgp --sign-key <user> --signer <signer> --sig-type <type> --passphrase <pass>
+
+PGP Command Line supports several signature types:
+	- local means the signature is non-exportable, which means it cannot be sent
+	with the key to a keyserver or exported in any way. Use this signature when
+	you believe the key is valid, but you don’t want others to rely on your opinion
+	of the key.
+	 - exportable means the signature is exportable. The signature can be sent with the key to a keyserver or exported with the key.
+	Use this signature when you believe the key is valid and you want others to be able to rely on your opinion of the key. They are not obligated to rely on
+	your opinion, however.
+	 - meta-introducer means this is a non-exportable meta-introducer, which
+	means that this key and any keys signed by this key with a trusted
+	introducer validity assertion are fully trusted introducers to you. This
+	signature type is not exportable.
+	 - trusted-introducer means that you certify that this key is valid and that the
+	owner of the key should be completely trusted to vouch for other keys. This
+	signature type is exportable.
+	 --trust-depth for meta-introducers and trusted introducers, you can specify
+	how many levels of trust your signature applies to. The default for meta introducer
+	is 2, the default for trusted introducers is 1. The maximum depth for
+	both is 8.
+	 --regular-expression lets you establish a domain restriction for trusted
+	introducers. This limits the trusted introducer’s certificate validation capabilities
+	to the domain you enter. For example, example.com.
+
+When you import a key, if the key is not trusted, when you encrypt a file with it may give you an error:
+(3064:key invalid)
+=========================================================================================================
+In order to fix this, you must sign the key with a key of your own, and that key must be valid.
+=========================================================================================================
+
+pgp --set-trust <user> --trust <trust>
+
+Trust options are: never (the key is never trusted), marginal (the key is marginally
+trusted), complete (the key is fully trusted), implicit (the key has ultimate trust).
+
